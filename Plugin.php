@@ -88,6 +88,7 @@ class ExternalTool_Plugin implements Typecho_Plugin_Interface
             if($a_tmp['host'] != $domain){
                 $a->setAttribute('class', 'external');
                 $a->setAttribute('rel', 'external nofollow');
+                $a->setAttribute('target', '_blank');
             }else{
                 $a->setAttribute('class', 'internal');
             }

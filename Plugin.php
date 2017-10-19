@@ -63,17 +63,14 @@ class ExternalTool_Plugin implements Typecho_Plugin_Interface
      */
     public static function replace($content, $class, $string)
     {
-
         $html_string = is_null($string) ? $content : $string;
-
         class_exists('simple_html_dom') || require_once 'simple_html_dom.php';
-
         $html = str_get_html($html_string, 1, 1, 'UTF-8', false);
-
-        $html = self::external_tool($html);
-
-        return $html->save();
-
+        if($html){
+            $html = self::external_tool($html);
+            return $html->save();
+        }
+        return $content;
     }
 
     public static function external_tool($dom)
